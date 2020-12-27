@@ -27,11 +27,16 @@ class AutomationChromecast {
 
     this.setDefaultProperties(true);
 
-    this.switchService = new Service.Switch(this.name);
+    this.switchService = new Service.Light(this.name);
     this.switchService
       .getCharacteristic(Characteristic.On)
       .on('get', this.isCasting.bind(this))
       .on('set', this.setCasting.bind(this));
+    
+    this.switchService
+      .getCharacteristic(Characteristic.Brightness)
+      .on('get', callback => callback(null, Math.floor(this.volume * 100)))
+      .on('set', this.setVolume.bind(this));
 
     this.switchService
       .addCharacteristic(CustomCharacteristics.DeviceType)

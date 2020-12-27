@@ -7,14 +7,14 @@
     "homebridge-plugin"
   ],
   "author": {
-    "name": "Paolo Tremadio"
+    "name": "Blake Tourneur"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paolotremadio/homebridge-automation-chromecast.git"
+    "url": "git+https://github.com/blat2512/homebridge-automation-chromecast.git"
   },
   "bugs": {
-    "url": "http://github.com/paolotremadio/homebridge-automation-chromecast/issues"
+    "url": "http://github.com/blat2512/homebridge-automation-chromecast/issues"
   },
   "engines": {
     "node": ">=8.0.0",
