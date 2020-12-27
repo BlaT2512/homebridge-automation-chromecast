@@ -21,7 +21,7 @@ class AutomationChromecast {
     this.name = config.name;
     this.chromecastDeviceName = config.chromecastDeviceName;
     this.switchOffDelay = config.switchOffDelay || 0;
-    this.debug = debug(`homebridge-automation-chromecast:${this.chromecastDeviceName}`);
+    this.debug = debug(`homebridge-chromecast-blake:${this.chromecastDeviceName}`);
 
     const CustomCharacteristics = InitCustomCharacteristics(Characteristic);
 
@@ -395,5 +395,5 @@ module.exports = (homebridge) => {
   Service = homebridge.hap.Service; // eslint-disable-line
   Characteristic = homebridge.hap.Characteristic; // eslint-disable-line
 
-  homebridge.registerAccessory('homebridge-automation-chromecast', 'AutomationChromecast', AutomationChromecast);
+  homebridge.registerAccessory('homebridge-chromecast-blake', 'AutomationChromecast', AutomationChromecast);
 };

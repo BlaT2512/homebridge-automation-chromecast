@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-automation-chromecast",
+  "name": "homebridge-chromecast-blake",
   "version": "2.0.2",
   "description": "Expose Chromecast/Chromecast Audio devices in Homebridge to enable automations",
   "license": "ISC",
