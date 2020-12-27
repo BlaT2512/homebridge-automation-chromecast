@@ -27,7 +27,7 @@ class AutomationChromecast {
 
     this.setDefaultProperties(true);
 
-    this.switchService = new Service.Lightbulb(this.name);
+    this.switchService = new Service.Lightbulb(this.name , "switchService");
     this.switchService
       .getCharacteristic(Characteristic.On)
       .on('get', this.isCasting.bind(this))
