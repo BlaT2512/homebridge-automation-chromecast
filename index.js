@@ -27,16 +27,11 @@ class AutomationChromecast {
 
     this.setDefaultProperties(true);
 
-    this.switchService = new Service.Lightbulb(this.name , "switchService");
+    this.switchService = new Service.Lightbulb(this.name);
     this.switchService
       .getCharacteristic(Characteristic.On)
       .on('get', this.isCasting.bind(this))
       .on('set', this.setCasting.bind(this));
-    
-    this.switchService
-      .getCharacteristic(new Characteristic.Brightness())
-      .on('get', callback => callback(null, Math.floor(this.volume * 100)))
-      .on('set', this.setVolume.bind(this));
 
     this.switchService
       .addCharacteristic(CustomCharacteristics.DeviceType)
@@ -51,7 +46,7 @@ class AutomationChromecast {
       .on('get', callback => callback(null, this.deviceId));
 
     this.switchService
-      .addCharacteristic(Characteristic.Volume)
+      .addCharacteristic(Characteristic.Brightness)
       .on('get', callback => callback(null, Math.floor(this.volume * 100)))
       .on('set', this.setVolume.bind(this));
 
