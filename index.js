@@ -50,11 +50,11 @@ class AutomationChromecast {
       .on('get', callback => callback(null, Math.floor(this.volume * 100)))
       .on('set', this.setVolume.bind(this));
 
-    this.motionService = new Service.MotionSensor(`${this.name} Streaming`);
+    //this.motionService = new Service.MotionSensor(`${this.name} Streaming`);
 
-    this.motionService
-      .getCharacteristic(Characteristic.MotionDetected)
-      .on('get', this.isCasting.bind(this));
+    //this.motionService
+    //  .getCharacteristic(Characteristic.MotionDetected)
+    //  .on('get', this.isCasting.bind(this));
 
     this.accessoryInformationService = new Service.AccessoryInformation();
 
@@ -304,18 +304,18 @@ class AutomationChromecast {
 
       this.switchService.setCharacteristic(Characteristic.On, this.isCastingStatus);
 
-      const updateMotionSensor = () => {
-        this.motionService.setCharacteristic(Characteristic.MotionDetected, this.isCastingStatus);
-        this.log(`Motion sensor ${this.isCastingStatus ? 'is detecting movements' : 'stopped detecting movements'}`);
-      };
+      //const updateMotionSensor = () => {
+      //  this.motionService.setCharacteristic(Characteristic.MotionDetected, this.isCastingStatus);
+      //  this.log(`Motion sensor ${this.isCastingStatus ? 'is detecting movements' : 'stopped detecting movements'}`);
+      //};
 
-      if (!this.isCastingStatus && this.switchOffDelay) {
-        this.switchOffDelayTimer = setTimeout(updateMotionSensor, this.switchOffDelay);
-      } else {
-        if (this.switchOffDelayTimer) {
-          clearTimeout(this.switchOffDelayTimer);
-        }
-        updateMotionSensor();
+      //if (!this.isCastingStatus && this.switchOffDelay) {
+      //  this.switchOffDelayTimer = setTimeout(updateMotionSensor, this.switchOffDelay);
+      //} else {
+      //  if (this.switchOffDelayTimer) {
+      //    clearTimeout(this.switchOffDelayTimer);
+      //  }
+      //  updateMotionSensor();
       }
     }
   }
@@ -323,7 +323,7 @@ class AutomationChromecast {
   getServices() {
     return [
       this.switchService,
-      this.motionService,
+      //this.motionService,
       this.accessoryInformationService,
     ];
   }
