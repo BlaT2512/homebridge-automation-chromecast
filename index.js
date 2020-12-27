@@ -316,7 +316,7 @@ class AutomationChromecast {
       //    clearTimeout(this.switchOffDelayTimer);
       //  }
       //  updateMotionSensor();
-      }
+      //}
     }
   }
 
