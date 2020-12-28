@@ -4,7 +4,7 @@
 ## Installation
 
 ### Install dependencies
-This command will work on Raspbian. Please Google the right comand for your platform.
+This command will work on Raspbian. Please Google the right command for your platform.
 
 ```
 sudo apt-get install libavahi-compat-libdnssd-dev
@@ -27,21 +27,21 @@ Example config.json:
 }
 ```
   
-This accessory will create a switch linked with the status of a Chromecast or Chromecast Audio device.  
-It will also create a Motion Sensor, to trigger automation.  
+This accessory will create a light linked with the status of a Chromecast Audio device and a TV with the status of a Chromecast Video device.  
+It can also optionally create a Motion Sensor, to trigger automation (the lightbulb or TV can now also be used instead).  
   
-When you stream some audio/video to the Chromecast / Chromecast Audio, the switch turns on and the Sensor detects movement. Stop the streaming will turn the switch off and the sensor will stop detecting movements.  
+When you stream some audio/video to the Chromecast / Chromecast Audio, the light turns on and the Sensor detects movement. Stop the streaming will turn the light off and the sensor will stop detecting movements.  
   
-Turning On the switch will play the currently casted stream. Turning Off the switch will stop the stream.  
+Turning On the lightbulb will play the currently casted stream. Turning Off the lightbulb will stop the stream.  
 
-The switch has the following properties:
+The lightbulb has the following properties:
 
 | Name | Description | Example |
 |------|-------------|---------|
+| Brightness | The volume slider, to adjust the volume of the device (it can be also used within automations) | n/a | 
 | Type | The type of the device. | `Chromecast Audio` |
 | IP Address | The full IP address + port of the device | `192.168.1.100:8009` |
 | ID | The Chromecast UUID | `a80722d5aa123456e408635c475988ca` |
-| Volume | The volume slider, to adjust the volume of the device (it can be also used within automations) | n/a | 
 
 Note: some properties are not compatible with iOS Home app, use [Elgato Eve app](https://itunes.apple.com/us/app/elgato-eve/id917695792?mt=8) instead.
   
@@ -54,14 +54,14 @@ Note: some properties are not compatible with iOS Home app, use [Elgato Eve app]
 | switchOffDelay | No (default: `0`) | The number of milliseconds to wait before the motion sensor stops detecting movement after stop casting. By default it is set to zero: as soon as you stop playing, the motion sensor will switch off. If you want to add a delay, set it to a value greater than zero. This config is useful for automations (see later example on this readme). | `5000` (milliseconds, equal to 5 seconds) |
 
 ## Credits
-This project as been largely inspired by the work of [@robertherber](https://bitbucket.org/robertherber/homebridge-chromecast/src)  
+This is a fork and revised version of the original project by [@paolotremadio](https://github.com/paolotremadio/homebridge-automation-chromecast)
 
 
 # Examples
 ## Dim the lights when I stream some video to my Chromecast  
 1. Create an accessory in Homebridge (code example at the top of this readme)  
-2. Create a new automation in iOS Home/HomeKit: when the Motion Sensor detects movement, trigger a scene of your choice (e.g. "Movie lights")  
-3. Start streaming to the Chromecast. The Motion Sensor will detect a movement, triggering the scene  
+2. Create a new automation in iOS Home/HomeKit: when the Motion Sensor detects movement or light switches on, trigger a scene of your choice (e.g. "Movie lights")  
+3. Start streaming to the Chromecast. The Motion Sensor will detect a movement and/or light will switch on, triggering the scene  
 
 
 ## Turn on/off the speakers when I streaming music
@@ -83,8 +83,3 @@ Using a delay will prevent the speakers from switching on and off constantly whe
 ## Other examples
 - Mute your Chromecast Audios when playing something from your Chromecast Video
 - Pause your Chromecast when leaving home
-
-# Other useful plugins
-Do you want to play some audio/video on demand from your automation? 
-
-Check my [homebridge-automation-chromecast-play](https://github.com/paolotremadio/homebridge-automation-chromecast-play) plugin.
